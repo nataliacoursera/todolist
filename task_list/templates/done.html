@@ -1,0 +1,13 @@
+{%extends 'main.html' %}
+{% block done %}
+<form action='' value='TO_DO_LIST_id' method = 'post'>
+    {%csrf_token%}
+    <title>{{done}}</title>
+
+    <h1>Done</h1>
+</form>
+
+
+
+
+{%endblock%}

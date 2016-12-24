@@ -1,0 +1,39 @@
+
+<!DOCTYPE html >
+{% load staticfiles %}
+<html>
+<head>
+
+    <title>ToDo-list manager</title>
+    <link rel='stylesheet' type='text/css' href="{% static 'static/css/foundation.css' %}">
+    <link rel='stylesheet' type='text/css' href="{% static 'static/css/style.css' %}">
+
+</head>
+<body>
+<div class='top-bar'>
+    <section class='top-bar-section'>
+        <ul class='right'>
+            {%if username %}
+            <li><a href='/auth/logout/' >logout({{username}})</a></li>
+            {%else%}
+            <li><a href='/auth/login/' >login</a></li>
+            {%endif%}
+        </ul>
+    </section>
+</div>
+<h1><a href="/">My todo list</a></h1>
+<div class='row'>
+
+    {%block login%}{%endblock%}
+
+    {%block done%}{%endblock%}
+    {%block addnew%} {%endblock%}
+    {%block delete%}{%endblock%}
+    {%block addtodolist%}{%endblock%}
+    {% block todolistdone %}{%endblock%}
+    {%block todo%}{%endblock%}
+    {%block category%}{%endblock%}
+
+</div>
+</body>
+</html>

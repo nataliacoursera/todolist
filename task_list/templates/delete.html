@@ -1,0 +1,26 @@
+{%extends 'main.html' %}
+{%block delete%}
+
+
+
+
+        <table>{{todo}}</table>
+        <h3>Are you sure you want to delete?</h3>
+        <form action="delete/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="delete" value="Yes" class="my-button"> <input type="submit" name="nodelete" value="No" class="my-button">
+        </form>
+
+
+
+
+
+
+
+
+
+
+{%endblock%}
+
+
+

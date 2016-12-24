@@ -1,0 +1,62 @@
+{%extends 'main.html' %}
+
+{% block addtodolist %}
+<form action='/todolist/addnew/' method = 'post' class="form">
+    {%csrf_token%}
+
+    <input type='submit' class='button' value='Add Todolist'>
+</form>
+<form action='/todolist/add_category/' method = 'post' class="form">
+    {%csrf_token%}
+
+    <input type='submit' class='button' value='Add Category'>
+</form>
+
+{%endblock%}
+
+
+{% block todolistdone %}
+{% for one in todolist %}
+<p>
+    <a href="/todolist/get/{{one.id}}">{{one.todolist_list}}</a>
+</p>
+
+<h5>Category: {{one.todolist_category}}</h5>
+
+<form action = "todolist/done/{{one.id}}/" method = "post" class="form">
+    {% csrf_token %}
+
+    <input type="submit" name="Done" value="Done" class="my-button">
+</form>
+
+<form action = "todolist/delete_confirm/{{one.id}}/" method = "post" class="form">
+    {% csrf_token %}
+    <input type="submit" name='Delete' value='Delete' class="my-button">
+</form>
+<hr>
+{% endfor %}
+
+<div class='row'>
+    <div class='large-3 large-offset-5 columns'>
+        <ul class='pagination'>
+            {% if todolist.has_previous%}
+            <li class='arrow'><a href="/page/{{todolist.previous_page_number}}/">&laquo;</a></li>
+            {%else%}
+            <li class='arrow unavailable'><a href="">&laquo;</a></li>
+            {%endif%}
+            {%for page in todolist.paginator.page_range%}
+            {%if page == todolist.number%}
+            <li class="current"><a href="/page/{{page}}/">{{page}}</a></li>
+            {%else%}
+            <li><a href="/page/{{page}}/">{{page}}</a></li>
+            {%endif%}
+            {%endfor%}
+            {%if todolist.has_next%}
+            <li class="arrow"><a href="/page/{{todolist.next_page_number}}/">&raquo;</a></li>
+            {%else%}
+            <li class='arrow unavailable'><a href="">&raquo;</a></li>
+            {%endif%}
+        </ul>
+    </div>
+</div>
+{%endblock%}

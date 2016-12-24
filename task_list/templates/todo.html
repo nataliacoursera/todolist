@@ -1,0 +1,28 @@
+{%extends 'main.html' %}
+
+{%block todo%}
+{% load staticfiles %}
+<table>{{ form }}</table>
+
+<link rel='stylesheet' type='text/css' href="{% static 'static/css/foundation.css' %}">
+
+<h2>{{todo.todolist_list}}</h2>
+<p>Description: {{todo.todolist_description}}</p>
+
+<h2>Done?
+    <span class="todo-state">{{todo.todolist_done}}</span>
+</h2>
+
+<h3>Priority: {{todo.todolist_priority}}</h3>
+<h3>Date finished: {{todo.todolist_date_finished}}</h3>
+<h3>Date published: {{todo.todolist_date_published}}</h3>
+
+
+<hr>
+<p><a href ="/todolist/get/{{one.id}}/">{{one.todolist_list}}</a></p>
+
+
+
+
+{%endblock%}
+

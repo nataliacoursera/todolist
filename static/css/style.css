@@ -1,0 +1,21 @@
+.my-button {
+    border: none;
+    border-radius: 5px !important;
+    padding: 8px;
+    background-color: #36b3b8;
+}
+
+.my-button:hover {
+    transition: all .2s linear;
+    background-color: #16d98e;
+    cursor: pointer;
+}
+
+.form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.todo-state {
+    color: maroon;
+}
